@@ -1,0 +1,13 @@
+#!/bin/sh -x
+
+echo I HOPE YOU BUMPED THE VERSION NUMBER!!!
+
+perl Makefile.PL PREFIX=$PERL
+rm *.tar.gz
+
+db-backup.pl recipe
+cp /tmp/recipe.pgsql .
+
+make tardist
+pause *.tar.gz
+
